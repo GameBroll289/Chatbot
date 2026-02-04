@@ -1,3 +1,25 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
+embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+# 2. Load the existing Vector Store
+# Notice we just point to the directory. We do NOT pass 'documents' here.
+vector_store = Chroma(
+    persist_directory="./chroma_db", 
+    embedding_function=embedding_model
+)
+
+while True:
+    query = input("Enter your search query (or 'q' to exit): ")
+    if query.lower() == 'q':
+        break
+    else:
+        # Retrieve the top 3 most similar chunks
+        results = vector_store.similarity_search(query, k=3)
+
+        print("\n--- Search Results ---")
+        for doc in results:
+            print(f"Content: {doc.page_content}")
+            print(f"Source Row ID: {doc.metadata['row_id']}")
+            print("---")
