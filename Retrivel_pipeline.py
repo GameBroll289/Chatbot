@@ -10,6 +10,8 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
+from flask import Flask, request, jasonify
+
 embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # Load the existing Vector Store
@@ -49,9 +51,11 @@ while True:
     if query.lower() == 'q':
         break
     else:
-        # The input to the new chain is a dictionary
-        response = retrieval_chain.invoke({"input": query})
+        # Retrieve the top 3 most similar chunks
+        results = vector_store.similarity_search(query, k=3)
 
-        print("\n--- AI Answer ---")
-        # The answer is now in the 'answer' key of the response dictionary
-        print(response['answer'])
+        print("\n--- Search Results ---")
+        for doc in results:
+            print(f"Content: {doc.page_content}")
+            print(f"Source Row ID: {doc.metadata['row_id']}")
+            print("---")

@@ -1,7 +1,3 @@
-import os
-# This tells Hugging Face to use local files only and NEVER ping the internet
-os.environ['HF_HUB_OFFLINE'] = '1'
-
 import pandas as pd
 from langchain_core.documents import Document
 

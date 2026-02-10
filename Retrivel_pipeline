@@ -1,6 +1,7 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
+<<<<<<< HEAD
 embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # 2. Load the existing Vector Store
@@ -23,3 +24,5 @@ while True:
             print(f"Content: {doc.page_content}")
             print(f"Source Row ID: {doc.metadata['row_id']}")
             print("---")
+=======
+>>>>>>> parent of a2c6256 (history Needed)
