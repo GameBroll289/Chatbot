@@ -57,5 +57,3 @@ while True:
         print("\n--- AI Answer ---")
         # The answer is now in the 'answer' key of the response dictionary
         print(response['answer'])
-
-#ETC 2
