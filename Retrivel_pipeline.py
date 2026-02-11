@@ -57,5 +57,3 @@ while True:
         print("\n--- AI Answer ---")
         # The answer is now in the 'answer' key of the response dictionary
         print(response['answer'])
-
-#HI! This is the Retrieval Pipeline. It connects to the vector store we created in the Ingestion Pipeline, retrieves relevant chunks based on a user query, and then uses an LLM to generate an answer based on those chunks.

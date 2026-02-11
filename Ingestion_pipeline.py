@@ -4,12 +4,12 @@ from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
-Make_DataBase = False
+Make_DataBase = True
 
 if (Make_DataBase == True):
 
     # 1. Load the data (Do NOT drop the ID column this time!)
-    doc = pd.read_excel('/home/ahmed/Desktop/Chatbot/Pharmacy Inventory Data Generation.xlsx')
+    doc = pd.read_excel('C:/Users/Ahmed/Desktop/Chatbot/Pharmacy Inventory Data Generation DES.xlsx')
 
     langchain_chunks = []
 
